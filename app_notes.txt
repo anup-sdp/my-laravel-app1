@@ -1,0 +1,127 @@
+laravel app created aug 24-31, 2026
+
+check laravel and composer setup:
+php --version
+composer --version
+
+
+from parent folder:
+composer diagnose
+composer create-project laravel/laravel my-laravel-app1
+cd my-laravel-app1
+code .
+
+In modern Laravel applications, Tailwind CSS is processed by Vite.
+for tailwind classes (fixed tailwind warning in welcome.blade.php):
+npm install
+public/build/manifest.json (or public/hot during dev) created
+the @vite branch takes over,
+use: @vite(['resources/css/app.css', 'resources/js/app.js']) in head of blade file,
+in app.css use: @import 'tailwindcss';
+
+run app:
+start mysql server(eg. from xampp)  <------
+npm run dev (keep running in terminal, vite dev server) / npm run build <-----
+php artisan serve <-----
+
+
+=======
+playlist: Dani Krossing channel: https://www.youtube.com/playlist?list=PL0eyrZgxdwhy7Woo2VRRDMmTXXYT_iaYO
+helper ai: Grok 4.5
+
+======
+in app:
+shown basic examples at web.php
+layouts
+implemented users and posts models, web routes for both with blade template,
+and api routes for posts at /api/posts
+user and post models are not connected!
+======
+
+the application’s HTTP entry point is public/index.php > bootstrap/app.php
+> routes/web.php > resources/views/welcome.blade.php
+
+resources/css/app.css is typically the main CSS entry file for your frontend styles.
+Laravel usually doesn't serve this file directly to the browser. Instead, it is processed by Vite.
+
+clear the cache: php artisan view:clear
+
+===========
+model and controller
+
+php artisan make:model Post -mcr
+# or more completely:
+php artisan make:model Post --migration --controller --resource --requests
+# Shortcut for almost everything:
+php artisan make:model Post --all
+
+---
+my mysql db setup process:
+in xampp controll panel: Start Apache and MySQL
+at http://localhost/phpmyadmin/
+areate database my_laravel_app1 with Collation: utf8mb4_unicode_ci, dont create tables manually
+
+in .env file:
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3307
+DB_DATABASE=my_laravel_app1
+DB_USERNAME=root
+DB_PASSWORD=
+
+run:
+php artisan config:clear
+php artisan cache:clear
+
+php artisan make:model Post -mcr
+it creates files:
+app/Models/Post.php
+app/Http/Controllers/PostController.php
+and a new migration file at database/migrations/
+in the migration file in up functions add needed fields for class Post
+
+now run: php artisan migrate
+it creates posts(+user) table in mysql db
+
+in routes/web.php add:
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+Route::resource('posts', PostController::class); // gives all CRUD routes
+
+write codes in web.php, Post.php, PostController.php, 2026_08_29_050415_create_posts_table.php
+
+now see routes are created: php artisan route:list
+
+no user routes yet, run :
+php artisan make:model User -mcr   (...similar to post)
+or (model already exists): php artisan make:controller UserController --resource
+user: anup, pw: 123456
+
+==============
+create api/posts routes (json only):
+
+add api support for laravel 11/12: php artisan install:api
+php artisan make:controller Api/PostApiController --api
+creates: app/Http/Controllers/Api/PostApiController.php
+write codes in PostApiController.php and routes/api.php
+in bootstrap/app.php add: api: __DIR__.'/../routes/api.php',
+
+php artisan config:clear
+php artisan route:clear
+php artisan route:list --path=api
+or, php artisan route:list
+
+
+==============
+github upload:
+git init
+git status
+git branch -M main
+git add .
+git commit -m "initial commit"
+
+
+# later
+git remote add origin https://github.com/anup-sdp/my-laravel-app1.git
+
+git push -u origin main

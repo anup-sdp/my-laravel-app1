@@ -1,0 +1,34 @@
+=====================
+laravel file structure:
+
+app/ : Core application code
+app/Models/ : Contains your Eloquent models
+app/Http/Controllers/ : Contains your controllers. (similar django views)
+app/Http/Requests/ : Contains Form Request classes used for validation. (similar Pydantic models for validation in FastAPI)
+app/Http/Middleware/ : Contains middleware
+app/Providers/ : Contains Laravel service providers
+bootstrap/ : Contains files used to bootstrap the Laravel framework.
+bootstrap/app.php : In Laravel 11+, most high-level configuration happens here
+config/ : Configuration files
+database/ : Migrations, factories, seeders
+public/ : Web server document root (entry point)
+resources/ : Views, raw frontend assets, language files
+routes/ : This is where you define URLs/endpoints.
+storage/ : Generated/runtime files (must be writable by the web server).
+tests/ : PHPUnit (or Pest) tests — Feature and Unit tests. Laravel has built-in support for automated testing.
+node_modules/ :   (JavaScript/Front-End Dependencies)
+vendor/ : Composer dependencies (do not edit), managed by composer install/update. (similar .venv/)
+.env           : Environment variables (never commit this)
+.env.example   : Template for .env
+artisan        : Command-line interface entry point
+composer.json  : PHP dependencies & autoloading
+package.json   : Frontend (Node) dependencies
+phpunit.xml    : PHPUnit test configuration
+vite.config.js : Vite frontend build config
+
+laravel learning flow:
+PHP basics, Laravel routing, Controllers, Blade, Models + Eloquent, Migrations, Relationships,
+Form Requests + validation, Authentication, REST APIs, Middleware, Service classes / application architecture
+
+
+====================
