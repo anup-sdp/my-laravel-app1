@@ -123,5 +123,6 @@ git commit -m "initial commit"
 
 # later
 git remote add origin https://github.com/anup-sdp/my-laravel-app1.git
-
+git add .
+git commit -m "v0.1"
 git push -u origin main
