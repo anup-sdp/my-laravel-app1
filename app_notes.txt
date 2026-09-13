@@ -1,9 +1,12 @@
 laravel app created aug 24-31, 2026
+=======
+playlist: Dani Krossing channel: https://www.youtube.com/playlist?list=PL0eyrZgxdwhy7Woo2VRRDMmTXXYT_iaYO
+extended with helper ai: Grok 4.5
+=======
 
 check laravel and composer setup:
 php --version
 composer --version
-
 
 from parent folder:
 composer diagnose
@@ -25,18 +28,14 @@ npm run dev (keep running in terminal, vite dev server) / npm run build <-----
 php artisan serve <-----
 
 
-=======
-playlist: Dani Krossing channel: https://www.youtube.com/playlist?list=PL0eyrZgxdwhy7Woo2VRRDMmTXXYT_iaYO
-helper ai: Grok 4.5
-
-======
-in app:
+================
+features in app:
 shown basic examples at web.php
-layouts
+layouts, 2 approaches shown: Blade Component and Blade Inheritance 
 implemented users and posts models, web routes for both with blade template,
 and api routes for posts at /api/posts
 user and post models are not connected!
-======
+================
 
 the application’s HTTP entry point is public/index.php > bootstrap/app.php
 > routes/web.php > resources/views/welcome.blade.php
@@ -97,7 +96,7 @@ php artisan make:model User -mcr   (...similar to post)
 or (model already exists): php artisan make:controller UserController --resource
 user: anup, pw: 123456
 
-==============
+--------------
 create api/posts routes (json only):
 
 add api support for laravel 11/12: php artisan install:api
@@ -120,9 +119,8 @@ git branch -M main
 git add .
 git commit -m "initial commit"
 
-
 # later
 git remote add origin https://github.com/anup-sdp/my-laravel-app1.git
 git add .
-git commit -m "v0.3"
+git commit -m "v0.4"
 git push -u origin main
